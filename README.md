@@ -11,9 +11,7 @@ Run the following command in the root directory of your Node-RED install
 
 ## Overview
 
-Iterate over an Array received on the input, giving the next element only after it receives a feedback.
-
-<img src="preview.png" width="200">
+Iterate over an Array received on the input, wait a feedback from all the sent elements before send an output on the second output
 
 
 ## Parallel Iterator

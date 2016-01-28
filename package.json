@@ -1,0 +1,33 @@
+{
+  "name": "node-red-contrib-parallel-iterator",
+  "version": "0.1.0",
+  "description": "Iterate over an Array received on the input, wait a feedback from all the sent elements before send an output on the second output",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redconnect-io/node-red-contrib-parallel-iterator.git"
+  },
+  "keywords": [
+    "node-red",
+    "parallel",
+    "iterator",
+    "array",
+    "async",
+    "flow",
+    "wait",
+    "redconnect"
+  ],
+  "node-red": {
+    "nodes": {
+      "Parallel-Iterator": "iterator.js"
+    }
+  },
+  "author": "Maurizio Carboni <mcarboni@redant.com>",
+  "contributors": [
+    "Maurizio Carboni <mcarboni@redant.com>"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/redconnect-io/node-red-contrib-parallel-iterator/issues"
+  },
+  "homepage": "https://github.com/redconnect-io/node-red-contrib-parallel-iterator#readme"
+}

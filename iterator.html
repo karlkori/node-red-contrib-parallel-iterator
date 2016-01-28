@@ -1,0 +1,87 @@
+<!--
+  Copyright 2016 mcarboni@redant.com
+
+  Licensed under the Apache License, Version 2.0 (the 'License');
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an 'AS IS' BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type='text/x-red' data-template-name='Parallel Iterator'>
+    <div class='form-row'>
+       <label for='node-input-name'><i class='fa fa-tag'></i> Name</label>
+       <input type='text' id='node-input-name' placeholder='Name'>
+    </div>
+    <div class="form-row" style="padding-top:10px;">
+        Iterate over msg.<input type="text" id="node-input-property" style="width: 200px;"/>
+    </div>
+    <div class='form-row pg'>
+        <label>&nbsp;</label>
+        <input type='checkbox' id='node-config-input-save-output' style='display: inline-block; width: auto; vertical-align: top;'>
+        <label for='node-config-input-save-output' style='width: 70%;'>Output processed data</label>
+    </div>
+    <div class='form-row pg'>
+        <label>&nbsp;</label>
+        <input type='checkbox' id='node-config-input-recursive' style='display: inline-block; width: auto; vertical-align: top;'>
+        <label for='node-config-input-recursive' style='width: 70%;'>Recursive</label>
+    </div>
+</script>
+
+<script type='text/x-red' data-help-name='Parallel Iterator'>
+    <p>A Parallel Iterator. </p>
+    <p>Iterate over an Array received on the input, wait a feedback from all the sent elements before send an output on the second output</p>
+
+    <p>The upper output is where is sent each element of the Array, the lower output is where is sent the output after all elements of the Array are processed.</p>
+    <p>Every element of the Array is sent as payload.</p>
+    <p>While the node is iterating over the Array he preserve the values of the properties that aren’t payload.</p>
+    <p>The node have the following properties :</p>
+    <h3 id="iterate-over-msg">Iterate over msg.</h3>
+    <p>Is the property that contains the Array that you want to iterate, you can use a dot for access to deeper properties <br>
+        Example :</p>
+    <pre><code>payload.response.items
+    </code></pre>
+    <h2 id="output-processed-data">Output processed data</h2>
+    <p>The data from each feedback is stored in an Array that is at the end passed as payload.</p>
+    <h2 id="recursive">Recursive</h2>
+    <p>If this checkbox is checked then the node will check while iterating if the input is an Array, in positive case the node will start iterating over the new input, and after finishing the new iterations then continues with the previous input.</p>
+</script>
+
+<script type='text/javascript'>
+    (function() {
+		RED.nodes.registerType('Parallel Iterator',{
+			category: 'function',
+			color:'#87A980',
+			defaults: {
+                name: { value:'' },
+                property: {value:'payload', required:true},
+                saveOutput: {value:false},
+                recursive: {value:false}
+			},
+			inputs: 1,
+			outputs: 2,
+			icon: 'parallel-iterator.png',
+			label: function() {
+				return this.name||('All together');
+			},
+			labelStyle: function() {
+				return this.name?'node_label_italic':'';
+			},
+			oneditprepare: function() {
+                $('#node-config-input-save-output').prop('checked',this.saveOutput);
+                $('#node-config-input-recursive').prop('checked',this.recursive);
+				$('#node-input-name').focus();
+            },
+			oneditsave: function() {
+                this.saveOutput = $( '#node-config-input-save-output' ).prop('checked') + 0;
+                this.recursive = $( '#node-config-input-recursive' ).prop('checked') + 0;
+			}
+		});
+    })();
+</script>

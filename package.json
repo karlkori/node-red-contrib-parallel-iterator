@@ -18,7 +18,7 @@
   ],
   "node-red": {
     "nodes": {
-      "Parallel-Iterator": "iterator.js"
+      "Parallel-Iterator": "91-02-pr-iterator.js"
     }
   },
   "author": "Maurizio Carboni <mcarboni@redant.com>",

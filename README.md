@@ -1,6 +1,7 @@
 Node-red Parallel Iterator
 ========================
 
+[![RedConnect Approved](https://img.shields.io/badge/RedConnect-Approved-brightgreen.svg?style=flat)](https://www.redconnect.io/addons/parallel-iterator/)
 
 Install
 -------

@@ -79,9 +79,9 @@
                 outputs     = flow_outputs[id];
             } else {
                 //In case of only one flow at time
-                actually_processing = processing.length;
                 processing  = _processing;
                 outputs     = _outputs;
+                actually_processing = processing.length;
             }
 
             //If the property is an Array then iterate over it

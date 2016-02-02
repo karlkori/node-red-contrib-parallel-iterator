@@ -55,7 +55,7 @@
             if ( node.storeId ) {
                 var id;
                 //Set if is a feedback
-                actually_processing  = Array.isArray(msg.__serialIteratorId);
+                actually_processing  = Array.isArray(msg.__parallelIteratorId);
                 //If is not processing and the input isn't an array, the data is invalid
                 if (!actually_processing && !Array.isArray(prop) ) {
                     return ;
@@ -67,13 +67,13 @@
                     flow_processing[id] = [];
                     flow_outputs[id]    = [];
                     //Add the id to the msg
-                    if (!msg.__serialIteratorId) {
-                        msg.__serialIteratorId = [];
+                    if (!msg.__parallelIteratorId) {
+                        msg.__parallelIteratorId = [];
                     }
-                    msg.__serialIteratorId.unshift(id);
+                    msg.__parallelIteratorId.unshift(id);
                 } else {
                     //It's a feedback
-                    id = msg.__serialIteratorId[0];
+                    id = msg.__parallelIteratorId[0];
                 }
                 processing  = flow_processing[id];
                 outputs     = flow_outputs[id];
